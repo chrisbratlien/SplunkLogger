@@ -23,7 +23,10 @@ namespace Splunk.SampleWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<SplunkLoggerConfiguration>(Configuration.GetSection("Splunk"));
-            services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+
+
+
         }
 
         /// <summary>
@@ -42,16 +45,17 @@ namespace Splunk.SampleWebAPI
             //                                                                                   //
             //                       Choose one of those loggers                                 //
             //                                                                                   //                                                                                  
-            loggerFactory.AddHECRawSplunkLogger(splunkLoggerConfiguration);                      //
+            //loggerFactory.AddHECRawSplunkLogger(splunkLoggerConfiguration);                      //
             //                                                                                   //
             //loggerFactory.AddHECJsonSplunkLogger(splunkLoggerConfiguration);                   //
             //                                                                                   //
             //loggerFactory.AddTcpSplunkLogger(splunkLoggerConfiguration);                       //
             //                                                                                   //
-            //loggerFactory.AddUdpSplunkLogger(splunkLoggerConfiguration);                       //
+            loggerFactory.AddFireAndForgetUdpLogger(splunkLoggerConfiguration);                  //
             /*                                                                                   */
             /******************************** Define Your Logger *********************************/
-
+            //MvcOptions.EnableEndpointRouting = false;
+            
             app.UseMvc();
         }
 

@@ -1,5 +1,14 @@
 # SplunkLogger
 
+## Modifications by chrisbratlien
+
+- dotnet 2.0 -> 3.1
+- FireAndForgetUdpLogger
+
+New to .NET core. Just trying to get a Fire and Forget UDP logger. This fork will probably get whittled down to just that.
+
+
+
 This is a C# .Net Core 2 ILogger implementation developed by **VTEX** developer [Caldas](https://github.com/Caldas) to send data to Splunk.
 
 ### Features

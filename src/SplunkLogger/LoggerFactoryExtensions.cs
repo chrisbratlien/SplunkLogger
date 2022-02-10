@@ -67,5 +67,19 @@ namespace Splunk
             loggerFactory.AddProvider(new SplunkUdpLoggerProvider(configuration, formatter));
             return loggerFactory;
         }
+        /// <summary>
+        /// Add <see cref="T:Splunk.Providers.FireAndForgetUdpLoggerProvider"/> as provider to logger factory.
+        /// </summary>
+        /// <param name="loggerFactory">Logger factory.</param>
+        /// <param name="configuration">Configuration.</param>
+        /// <param name="formatter">Custom text formatter.</param>
+        public static ILoggerFactory AddFireAndForgetUdpLogger(this ILoggerFactory loggerFactory, SplunkLoggerConfiguration configuration, ILoggerFormatter formatter = null)
+        {
+            if (formatter == null)
+                formatter = DefaultLoggerFormatter;
+            loggerFactory.AddProvider(new FireAndForgetUdpLoggerProvider(configuration, formatter));
+            return loggerFactory;
+        }
+
     }
 }
